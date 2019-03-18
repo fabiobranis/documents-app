@@ -1,12 +1,10 @@
-import Mongoose from "mongoose";
-import Config from "../config/index";
-
-Mongoose.Promise = global.Promise;
+import Mongoose from 'mongoose';
+import Config from '../config/index';
 
 const connectToDb = async () => {
     try {
         await Mongoose.connect(Config.mongoUrl, {
-            useMongoClient: true
+            useNewUrlParser: true
         });
     } catch (error) {
         throw error;

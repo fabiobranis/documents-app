@@ -1,38 +1,30 @@
-import Document from "../models/Document";
-import Cuid from "cuid";
-import Slug from "limax";
-import SanitizeHtml from "sanitize-html";
+import Document from '../models/Document';
+import Create from '../services/documents/Create';
+import Update from '../services/documents/Update';
+import Delete from '../services/documents/Delete';
+import Read from '../services/documents/Read';
+import List from '../services/documents/List';
 
 const DocumentController = {};
 
 DocumentController.index = async (request, response) => {
-    try {
-        await Document.find()
-            .sort("-created_at")
-            .exec((error, documents) => {
-                if (error) {
-                    response.status(500).send(error);
-                }
-                response.json({ documents });
-            });
-    } catch (error) {
-        response.send(error);
-    }
+    return await List(request, response);
 };
 
 DocumentController.get = async (request, response) => {
-    try {
-        Document.findOne({ cuid: request.params.cuid }).exec((error, document) => {
-            if (error) {
-                response.status(500).send(error);
-            }
-            response.json({ document });
-        });
-    } catch (error) {
-        response.send(error);
-    }
+    return await Read(request, response);
 };
 
-DocumentController.post = async (request,response) => {
-    
-}
+DocumentController.store = async (request, response) => {
+    return await Create(request, response);
+};
+
+DocumentController.update = async (request, response) => {
+    return await Update(request, response);
+};
+
+DocumentController.destroy = async (request, response) => {
+    return await Delete(request, response);
+};
+
+export default DocumentController;
