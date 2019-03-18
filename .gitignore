@@ -1,0 +1,20 @@
+# root folder
+.idea
+.vscode
+.DS_Store
+
+# express-server files
+express-server/node_modules
+express-server/.env.local
+express-server/.env.*.local
+express-server/.idea
+express-server/.vscode
+express-server/.DS_Store
+
+# vue-client files
+vue-client/node_modules
+vue-client/.env.local
+vue-client/.env.*.local
+vue-client/.idea
+vue-client/.vscode
+vue-client/.DS_Store
