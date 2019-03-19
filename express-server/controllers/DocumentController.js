@@ -3,6 +3,7 @@ import Update from '../services/documents/Update';
 import Delete from '../services/documents/Delete';
 import Read from '../services/documents/Read';
 import List from '../services/documents/List';
+import Blacklist from '../services/documents/Blacklist';
 
 const DocumentController = {};
 
@@ -54,6 +55,26 @@ DocumentController.update = async (request, response) => {
  */
 DocumentController.destroy = async (request, response) => {
     return await Delete(request, response);
+};
+
+/**
+ * Set a document as blacklisted
+ * @param request
+ * @param response
+ * @returns {Promise<void>}
+ */
+DocumentController.setBlacklisted = async (request, response) => {
+    return await Blacklist.setBlacklisted(request, response);
+};
+
+/**
+ * Removes a document from blacklist
+ * @param request
+ * @param response
+ * @returns {Promise<void>}
+ */
+DocumentController.removeFromBlacklist = async (request, response) => {
+    return await Blacklist.removeFromBlacklist(request, response);
 };
 
 export default DocumentController;

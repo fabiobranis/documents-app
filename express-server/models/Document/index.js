@@ -1,8 +1,10 @@
 import Mongoose from 'mongoose';
+import MongoosePaginate from 'mongoose-paginate-v2';
+
 const Schema = Mongoose.Schema;
 
 const documentSchema = new Schema({
-    name: { type: String, required: true },
+    name: {type: String, required: true},
     number: {
         type: String,
         required: true
@@ -13,12 +15,13 @@ const documentSchema = new Schema({
         enum: ['Person', 'Company'],
         default: 'Company'
     },
-    slug: { type: String, required: true },
-    created_at: { type: Date, default: Date.now }
+    blacklist: {type: Boolean, default: false},
+    slug: {type: String, required: true},
+    created_at: {type: Date, default: Date.now}
 });
 
-let Document = Mongoose.model('Document', documentSchema);
+documentSchema.plugin(MongoosePaginate);
 
-// todo - create a virtual field - boolean that informs if the document is blacklisted
+let Document = Mongoose.model('Document', documentSchema);
 
 export default Document;
