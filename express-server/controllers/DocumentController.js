@@ -1,4 +1,3 @@
-import Document from '../models/Document';
 import Create from '../services/documents/Create';
 import Update from '../services/documents/Update';
 import Delete from '../services/documents/Delete';

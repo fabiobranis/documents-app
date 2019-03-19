@@ -1,7 +1,14 @@
 import Document from '../../models/Document';
 import SanitizeHtml from 'sanitize-html';
+import { validationResult } from 'express-validator/check';
 
 export default async (request, response) => {
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+        return response.status(400).json(errors.array());
+    }
+
     try {
         Document.findById(request.params.id).exec((error, document) => {
             if (error) {
