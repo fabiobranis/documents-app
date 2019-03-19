@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = new Router();
 
-// check if document is blackliste
+// check if document is blacklisted
 router.get('/documents/:id/is-blacklisted', (request, response) => {
     response.json({ blacklist: true });
 });

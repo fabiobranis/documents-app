@@ -2,6 +2,12 @@ import Document from '../../models/Document';
 import SanitizeHtml from 'sanitize-html';
 import { validationResult } from 'express-validator/check';
 
+/**
+ * Update a document, if it exist
+ * @param request
+ * @param response
+ * @returns {Promise<*|Promise<any>>}
+ */
 export default async (request, response) => {
     const errors = validationResult(request);
 

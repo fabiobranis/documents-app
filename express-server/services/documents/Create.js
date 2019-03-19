@@ -3,6 +3,12 @@ import Slug from 'limax';
 import SanitizeHtml from 'sanitize-html';
 import { validationResult } from 'express-validator/check';
 
+/**
+ * Handles the creation of a Document in database
+ * @param request
+ * @param response
+ * @returns {Promise<*|Promise<any>>}
+ */
 export default async (request, response) => {
     const errors = validationResult(request);
 

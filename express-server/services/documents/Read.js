@@ -1,5 +1,11 @@
 import Document from '../../models/Document';
 
+/**
+ * Get a document if it exists
+ * @param request
+ * @param response
+ * @returns {Promise<void>}
+ */
 export default async (request, response) => {
     try {
         Document.findById(request.params.id).exec((error, document) => {
