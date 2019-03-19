@@ -4,14 +4,15 @@ import Document from '../../models/Document';
  * Returns the index of documents
  * @param request
  * @param response
+ * @param defaultFilter
  * @returns {Promise<void>}
  */
-export default async (request, response) => {
+export default async (request, response, defaultFilter = null) => {
 
     try {
         const queryStrings = request.query;
-        const filters = {};
         const protectedKeys = ['__v']; // fields that wont be used to filter
+        let filters = {};
 
         // find the available fields
         const fields = Object.keys(Document.schema.paths).filter(f => !(protectedKeys.indexOf(f) > -1) );
@@ -20,6 +21,11 @@ export default async (request, response) => {
             if (fields.indexOf(field) >= 0) {
                 filters[field] = new RegExp(queryStrings[field]);
             }
+        }
+
+        // default filters
+        if (defaultFilter) {
+            filters = Object.assign(filters, defaultFilter);
         }
 
         /**

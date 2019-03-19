@@ -1,6 +1,7 @@
 import Express from 'express';
 import BodyParser from 'body-parser';
 import documents from './routes/DocumentRoutes';
+import stats from './routes/ServerStatsRoutes';
 import connectToDb from './db/connect';
 
 const port = 3000;
@@ -19,7 +20,8 @@ app.get('/', (req, res) => {
     res.json({ msg: 'Welcome to documents api.' });
 });
 
-app.use('/api', documents);
+app.use('/api/v1', documents);
+app.use('/api/v1', stats);
 
 app.listen(port, () => {
     console.log(`Server is running at localhost:${port}`);

@@ -7,7 +7,7 @@ const blacklist = {};
  * @param request
  * @param response
  */
-blacklist.setBlacklisted = (request, response) => {
+blacklist.setBlacklisted = async (request, response) => {
 
     const errors = validationResult(request);
 
@@ -42,7 +42,7 @@ blacklist.setBlacklisted = (request, response) => {
  * @param request
  * @param response
  */
-blacklist.removeFromBlacklist = (request, response) => {
+blacklist.removeFromBlacklist = async (request, response) => {
 
     const errors = validationResult(request);
 

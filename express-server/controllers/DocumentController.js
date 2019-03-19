@@ -77,4 +77,14 @@ DocumentController.removeFromBlacklist = async (request, response) => {
     return await Blacklist.removeFromBlacklist(request, response);
 };
 
+/**
+ *
+ * @param request
+ * @param response
+ * @returns {Promise<void>}
+ */
+DocumentController.getBlacklist = async (request, response) => {
+    return await List(request, response,{blacklist: true});
+};
+
 export default DocumentController;

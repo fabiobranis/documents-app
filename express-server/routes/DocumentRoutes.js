@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import DocumentController from '../controllers/DocumentController';
 import ValidatesDocuments from '../services/documents/Validation';
 
@@ -6,7 +6,7 @@ const router = new Router();
 
 // list all documents
 router.get('/documents', (request, response) => {
-     DocumentController.index(request, response);
+    DocumentController.index(request, response);
 });
 
 // get a document by id
@@ -20,7 +20,7 @@ router.post('/documents', ValidatesDocuments.create, (request, response) => {
 });
 
 // update a document
-router.put('/documents/:id', ValidatesDocuments.update ,(request, response) => {
+router.put('/documents/:id', ValidatesDocuments.update, (request, response) => {
     DocumentController.update(request, response);
 });
 
@@ -29,13 +29,17 @@ router.delete('/documents/:id', (request, response) => {
     DocumentController.destroy(request, response);
 });
 
+router.get('/blacklist', (request, response) => {
+    DocumentController.getBlacklist(request, response);
+});
+
 // set a document as blacklisted
-router.post('/documents/:id/blacklist', ValidatesDocuments.setBlacklisted ,(request, response) => {
+router.post('/documents/:id/blacklist', ValidatesDocuments.setBlacklisted, (request, response) => {
     DocumentController.setBlacklisted(request, response);
 });
 
 // removes a document from a blacklist
-router.delete('/documents/:id/blacklist', ValidatesDocuments.removeFromBlacklist ,(request, response) => {
+router.delete('/documents/:id/blacklist', ValidatesDocuments.removeFromBlacklist, (request, response) => {
     DocumentController.removeFromBlacklist(request, response);
 });
 
