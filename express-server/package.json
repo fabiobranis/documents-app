@@ -5,8 +5,7 @@
     "main": "index.js",
     "scripts": {
         "watch": "nodemon --exec babel-node index.js",
-        "dev": "babel-node index.js",
-        "test": "mocha ./test -b --recursive"
+        "start": "babel-node index.js"
     },
     "author": "Fábio Branis",
     "license": "ISC",
