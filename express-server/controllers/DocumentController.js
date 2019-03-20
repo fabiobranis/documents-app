@@ -14,7 +14,7 @@ const DocumentController = {};
  * @returns {Promise<void>}
  */
 DocumentController.index = async (request, response) => {
-    return await List(request, response);
+    return await List(request, response,{blacklist: false});
 };
 
 /**
