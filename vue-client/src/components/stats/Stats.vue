@@ -10,6 +10,9 @@
         <v-container fill-height fluid>
             <v-layout fill-height>
                 <v-flex xs12 sm12 md12 align-center flexbox>
+                    <p>Uptime: {{uptime}} seconds</p>
+                    <p>Total Memory: {{totalMemory}}</p>
+                    <p>Free Memory: {{freeMemory}}</p>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -17,8 +20,26 @@
 </template>
 
 <script>
-    export default {
 
+    import {HTTP} from "../../plugins/http-common";
+
+    export default {
+        data: () => ({
+            uptime: null,
+            totalMemory: null,
+            freeMemory: null,
+            sessionRequests: null
+        }),
+        async mounted() {
+            try{
+                let {data} = await HTTP.get('stats');
+                this.uptime = data.uptime;
+                this.totalMemory = data.totalMemory;
+                this.freeMemory = data.freeMemory;
+            }catch (error) {
+                throw error;
+            }
+        }
     }
 </script>
 
