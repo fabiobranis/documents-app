@@ -3,6 +3,8 @@ import BodyParser from 'body-parser';
 import documents from './routes/DocumentRoutes';
 import stats from './routes/ServerStatsRoutes';
 import connectToDb from './db/connect';
+import SwaggerUi from 'swagger-ui-express';
+const swaggerDocument = require('./docs/swagger');
 
 const port = 3000;
 const app = Express();
@@ -22,6 +24,8 @@ app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
     next();
 });
+
+app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
     res.json({ msg: 'Welcome to documents api.' });

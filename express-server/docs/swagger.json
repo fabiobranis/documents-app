@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Documents API",
+    "description": "An API to Manage Documents",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Documents",
+      "description": "API for documents in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/documents": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Get all documents in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "description": "Create new document in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Document that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New document is created",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        }
+      }
+    },
+    "/documents/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of document that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Get document with given ID",
+        "responses": {
+          "200": {
+            "description": "Document is found",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete document with given ID",
+        "tags": [
+          "Documents"
+        ],
+        "responses": {
+          "200": {
+            "description": "Document is deleted",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update document with give ID",
+        "tags": [
+          "Documents"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Document with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document is updated",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Document": {
+      "required": [
+        "name",
+        "number",
+        "type"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "number": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Documents": {
+      "type": "array",
+      "$ref": "#/definitions/Document"
+    }
+  }
+}
