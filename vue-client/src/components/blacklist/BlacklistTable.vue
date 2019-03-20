@@ -32,23 +32,9 @@
                         <v-icon
                                 small
                                 class="mr-2"
-                                @click="editItem(props.item._id)"
-                        >
-                            edit
-                        </v-icon>
-                        <v-icon
-                                small
-                                class="mr-2"
                                 @click="blacklist(props.item._id)"
                         >
-                            thumb_down
-                        </v-icon>
-                        <v-icon
-                                small
-                                class="mr-2"
-                                @click="deleteItem(props.item._id)"
-                        >
-                            delete
+                            thumb_up
                         </v-icon>
                     </td>
                 </template>
@@ -115,12 +101,6 @@
             }
         },
         methods: {
-            async editItem(id) {
-                this.$emit('editItem', id);
-            },
-            async deleteItem(id) {
-                this.$emit('deleteItem', id);
-            },
             async blacklist(id) {
                 this.$emit('blacklist', id)
             },
@@ -160,7 +140,7 @@
                     };
 
                     this.loading = true;
-                    const {data} = await HTTP.get('documents', {params});
+                    const {data} = await HTTP.get('blacklist', {params});
                     this.loading = false;
                     return data;
                 } catch (error) {
