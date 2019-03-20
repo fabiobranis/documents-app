@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-app id="inspire">
+        <side-navigation
+                :drawer="drawer"
+        ></side-navigation>
+        <top-bar
+                @toggleMenu="drawer = !drawer"
+                title="Documents App"
+        ></top-bar>
+        <v-content>
+            <v-container fluid fill-height class="grey lighten-4">
+                <v-layout justify-center>
+                    <v-flex xs12 sm12 md12>
+                        <router-view></router-view>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import SideNavigation from './components/layout/SideNavigation';
+    import TopBar from "./components/layout/TopBar";
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        components: {TopBar, SideNavigation},
+        data() {
+            return {
+                drawer: true
+            }
+        }
+    }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
