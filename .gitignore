@@ -2,6 +2,7 @@
 .idea
 .vscode
 .DS_Store
+/data
 
 # express-server files
 express-server/build

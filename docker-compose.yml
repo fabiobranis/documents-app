@@ -13,9 +13,22 @@ services:
     build: 
       context: ./express-server
       dockerfile: Dockerfile
-    environment:
-      NODE_ENV: production
+    env_file:
+      - ./.env
     ports:
-      - 3000:3000
+      - "${PORT}:${PORT}"
     volumes:
       - ".:/app"
+    environment:
+      WAIT_HOSTS: database:27017
+    links:  
+      - database
+  database:
+    image: mongo:4.0
+    env_file:
+      - ./.env
+    volumes:
+      - ".${MONGO_DATA_DIR}:${MONGO_DATA_DIR}"
+    expose:
+      - 27017
+    command: "mongod --smallfiles --logpath=${MONGO_LOG_FILE}"

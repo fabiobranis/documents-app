@@ -2,8 +2,10 @@
  * Returns the configuration parsed
  */
 export default {
-    port: 3005,
+    port: 3000,
     mongoUrl:
-        'mongodb+srv://library:6eLjngxFD8ciSm7@cluster0-tmvzc.mongodb.net/documents-app?retryWrites=true',
-    bodyLimit: '100kb'
+        `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${
+            process.env.MONGO_INITDB_ROOT_PASSWORD
+            }@${process.env.MONGO_INITDB_DATABASE}:27017/documents?authMechanism=SCRAM-SHA-1&authSource=admin`
+
 };

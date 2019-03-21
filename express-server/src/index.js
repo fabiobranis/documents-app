@@ -4,9 +4,10 @@ import documents from './routes/DocumentRoutes';
 import stats from './routes/ServerStatsRoutes';
 import connectToDb from './db/connect';
 import SwaggerUi from 'swagger-ui-express';
+import Config from './config';
 const swaggerDocument = require('./docs/swagger');
 
-const port = 3000;
+const port = Config.port;
 const app = Express();
 
 connectToDb();
