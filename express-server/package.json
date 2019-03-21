@@ -1,30 +1,35 @@
 {
-    "name": "document-app-express-server",
-    "version": "1.0.0",
-    "description": "The server side of the document app, wich the user can store documents and blacklist then.",
-    "main": "index.js",
-    "scripts": {
-        "watch": "nodemon --exec babel-node index.js",
-        "start": "babel-node index.js"
-    },
-    "author": "Fábio Branis",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.18.3",
-        "express": "^4.16.4",
-        "express-validator": "^5.3.1",
-        "limax": "^1.7.0",
-        "mongoose": "^5.4.19",
-        "mongoose-paginate-v2": "^1.0.24",
-        "sanitize-html": "^1.20.0",
-        "swagger-ui-express": "^4.0.2"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.2.3",
-        "@babel/core": "^7.3.4",
-        "@babel/node": "^7.2.2",
-        "@babel/preset-env": "^7.3.4",
-        "eslint": "^5.15.2",
-        "nodemon": "^1.18.10"
-    }
+  "name": "document-app-express-server",
+  "version": "1.0.0",
+  "description": "The server side of the document app, wich the user can store documents and blacklist then.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon --exec babel-node index.js",
+    "start": "node ./build/index.js",
+    "build": "rm -rf ./build && mkdir build && mkdir build/docs && node -e \"require('ncp').ncp('./docs', './build/docs')\" && babel ./ --ignore node_modules --out-dir build"
+  },
+  "author": "Fábio Branis",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "limax": "^1.7.0",
+    "mongoose": "^5.4.19",
+    "mongoose-paginate-v2": "^1.0.24",
+    "sanitize-html": "^1.20.0",
+    "swagger-ui-express": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/polyfill": "^7.4.0",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/runtime": "^7.4.0",
+    "eslint": "^5.15.2",
+    "ncp": "^2.0.0",
+    "nodemon": "^1.18.10"
+  }
 }
