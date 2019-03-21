@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon --exec babel-node index.js",
-    "start": "node ./build/index.js",
-    "build": "rm -rf ./build && mkdir build && mkdir build/docs && node -e \"require('ncp').ncp('./docs', './build/docs')\" && babel ./ --ignore node_modules --out-dir build"
+    "build": "rm -rf ./build && mkdir build && mkdir build/docs && node -e \"require('ncp').ncp('./docs', './build/docs')\" && babel ./ --ignore node_modules --out-dir build",
+    "start": "npm run build && node ./build/index.js"
   },
   "author": "Fábio Branis",
   "license": "ISC",
