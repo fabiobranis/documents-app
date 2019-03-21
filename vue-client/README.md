@@ -1,29 +1,13 @@
-# vue-client
+# Vue Client
 
-## Project setup
-```
-npm install
-```
+This is the client application of the Documents app structure.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This application uses VueJS and is a SPA.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+I used vue-router in this application to manage the routes and vuetify for front-end.
 
-### Run your tests
-```
-npm run test
-```
+I choose vuetify because this lib is very complete with a lot of built in components that speeds up the application development.
 
-### Lints and fixes files
-```
-npm run lint
-```
+The application lives in src folder.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+To run this application locally, you have to run 'npm run serve'. 
