@@ -1,5 +1,5 @@
 import Mongoose from 'mongoose';
-import Config from '../config/index';
+import Config from '../config';
 
 /**
  * Returns the Mongoose connection

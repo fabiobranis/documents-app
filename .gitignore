@@ -4,6 +4,7 @@
 .DS_Store
 
 # express-server files
+express-server/build
 express-server/node_modules
 express-server/.env.local
 express-server/.env.*.local
@@ -12,6 +13,7 @@ express-server/.vscode
 express-server/.DS_Store
 
 # vue-client files
+express-server/dist
 vue-client/node_modules
 vue-client/.env.local
 vue-client/.env.*.local

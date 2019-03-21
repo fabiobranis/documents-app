@@ -1,0 +1,21 @@
+
+version: "3"
+services:
+  vue-client:
+    build: 
+      context: ./vue-client
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ".:/app"
+  express-server:
+    build: 
+      context: ./express-server
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    volumes:
+      - ".:/app"
