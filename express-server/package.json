@@ -12,8 +12,8 @@
   "author": "Fábio Branis",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "express-validator": "^5.3.1",
     "limax": "^1.7.0",
     "mongoose": "^5.4.19",
